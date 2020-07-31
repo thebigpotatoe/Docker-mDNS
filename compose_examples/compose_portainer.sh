@@ -1,0 +1,1 @@
+docker-compose -f compose_examples/docker-compose-portainer.yml up -d 

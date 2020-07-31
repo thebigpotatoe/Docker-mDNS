@@ -1,0 +1,15 @@
+version: "3.5"
+services:
+  portainer-mdns:
+    build: .
+    image: 127.0.0.1:5000/docker-mdns
+    deploy:
+      mode: global
+      placement:
+        constraints:
+            - "node.role==manager"
+    environment:
+      - mdns_service_name=portainer
+      - mdns_port=9000
+    network_mode: "host"
+    restart: unless-stopped

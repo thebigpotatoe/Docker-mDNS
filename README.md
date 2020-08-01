@@ -15,7 +15,7 @@ git clone https://github.com/thebigpotatoe/Docker-mDNS.git
 To build the container from this repo simply run:
 
 ``` bash
-bin/sh scripts/build.sh
+/bin/sh scripts/build.sh
 ```
 
 Then run a custom service using this image on the current host machine. An example to publish where portianer is hosted is as follows:

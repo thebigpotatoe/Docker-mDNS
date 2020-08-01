@@ -1,8 +1,8 @@
 # Docker-mDNS
 
-This image aims to be a very simple way of giving your docker environment basic mDNS capabilities. Since docker does not broadcast the service name of services or containers to the local network, the motivation behind this was to allow users to broadcast where docker services are on their network with very little effort or setup.
+This image aims to be a very simple way of broadcasting mDNS information on a local network. Since docker does not broadcast the service name of services or containers to the local network, the motivation behind this was to allow users to broadcast where docker services are on their network with very little effort or setup.
 
-The image is build using python:3.8-alpine as its base for space, but this can be changed to anything desired. Simply, the container runs a single python script which uses python-zeroconf to broadcast mDNS service information to a local network.
+The image is build using `python:3.8-alpine` as its base for space, but this can be changed to anything desired. Simply, the container runs a single python script which uses [python-zeroconf](https://pypi.org/project/zeroconf/) to broadcast mDNS service information to a local network.
 
 ## Quick Start
 

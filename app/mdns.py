@@ -35,8 +35,8 @@ if __name__ == '__main__':
 
         # Check and get the IP address for the service
         if mdns_ip_address is None: 
-            # mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\'")
-            mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\' | awk -F':' '{print $2}'")
+            # mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\'") # For ubuntu
+            mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\' | awk -F':' '{print $2}'") # For Alpine
         logging.info("Using IP address of: {}".format(mdns_ip_address))
 
         # Check the port 

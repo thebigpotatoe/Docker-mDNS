@@ -24,7 +24,7 @@ http://portainer.local:9000/
 
 ## Build from Source
 
-Download the repo into a know location:
+Download the repo into a known location:
 
 ``` bash
 git clone https://github.com/thebigpotatoe/Docker-mDNS.git

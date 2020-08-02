@@ -4,7 +4,25 @@ This image aims to be a very simple way of broadcasting mDNS information on a lo
 
 The image is build using `python:3.8-alpine` as its base for space, but this can be changed to anything desired. Simply, the container runs a single python script which uses [python-zeroconf](https://pypi.org/project/zeroconf/) to broadcast mDNS service information to a local network.
 
-## Quick Start
+## Quick start
+
+To advertise where a portainer instance might be use:
+
+``` bash
+docker run \
+    --network host \
+    --env mdns_service_name=portainer \
+    --env mdns_port=9000 \
+    thebigpotatoe/docker-mdns
+```
+
+Then naviagate to your service using your browswer at :
+
+```
+http://portainer.local:9000/
+```
+
+## Build from Source
 
 Download the repo into a know location:
 
@@ -16,16 +34,6 @@ To build the container from this repo simply run:
 
 ``` bash
 /bin/sh scripts/build.sh
-```
-
-Then run a custom service using this image on the current host machine. An example to publish where portianer is hosted is as follows:
-
-``` bash
-docker run \
-    --network host \
-    --env mdns_service_name=portainer \
-    --env mdns_port=9000 \
-    docker-mdns
 ```
 
 ## Usage

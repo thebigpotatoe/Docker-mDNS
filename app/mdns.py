@@ -26,9 +26,6 @@ if __name__ == '__main__':
         mdns_service_name = os.environ.get('mdns_service_name', None)
         mdns_text_services = os.environ.get('mdns_text_services', None)
 
-        # mdns_service_name = "scrote"
-        # mdns_port = 9000
-
         # Check and get the host name of the service
         if mdns_hostname is None: mdns_hostname = socket.gethostname()
         logging.info("Using hostname of: {}".format(mdns_hostname))

@@ -29,7 +29,9 @@ if __name__ == '__main__':
         if mdns_ip_address is None: 
             # mdns_ip_address = socket.gethostbyname(hostname)
             # mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\'") # For ubuntu
-            mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\' | awk -F':' '{print $2}'") # For Alpine
+            # mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\' | awk -F':' '{print $2}'") # For Alpine
+            import socket
+            mdns_ip_address = socket.gethostbyname(socket.gethostname())
         logging.info("Using IP address of: {}".format(mdns_ip_address))
 
         # Check the port 

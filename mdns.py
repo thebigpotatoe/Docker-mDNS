@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import os, subprocess, logging, socket, json, platform
+import os, subprocess, logging, socket, json, platform, socket
 from time import sleep
 from zeroconf import IPVersion, ServiceInfo, Zeroconf
 
@@ -30,8 +30,8 @@ if __name__ == '__main__':
             # mdns_ip_address = socket.gethostbyname(hostname)
             # mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\'") # For ubuntu
             # mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\' | awk -F':' '{print $2}'") # For Alpine
-            import socket
-            mdns_ip_address = socket.gethostbyname(socket.gethostname())
+            # mdns_ip_address = socket.gethostbyname(socket.gethostname())
+            mdns_ip_address = [ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.") and not ip.startswith("172.")][0]
         logging.info("Using IP address of: {}".format(mdns_ip_address))
 
         # Check the port 

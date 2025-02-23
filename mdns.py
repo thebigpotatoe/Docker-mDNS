@@ -4,6 +4,16 @@ import os, subprocess, logging, socket, json, platform, socket
 from time import sleep
 from zeroconf import IPVersion, ServiceInfo, Zeroconf
 
+def get_local_ip():
+    try:
+        # Connect to an external server (does not actually send data)
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+            s.connect(("8.8.8.8", 80))
+            return s.getsockname()[0]
+    except Exception as e:
+        logging.error(f"Error: {e}")
+        return "127.0.0.1"
+
 if __name__ == '__main__':
     try:
         # Start logging
@@ -31,7 +41,8 @@ if __name__ == '__main__':
             # mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\'") # For ubuntu
             # mdns_ip_address = subprocess.getoutput("ifconfig eth0 | grep \"inet \" | awk \'{print $2}\' | awk -F':' '{print $2}'") # For Alpine
             # mdns_ip_address = socket.gethostbyname(socket.gethostname())
-            mdns_ip_address = [ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.") and not ip.startswith("172.")][0]
+            # mdns_ip_address = [ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.") and not ip.startswith("172.")][0]
+            mdns_ip_address = get_local_ip()
         logging.info("Using IP address of: {}".format(mdns_ip_address))
 
         # Check the port 

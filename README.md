@@ -36,6 +36,15 @@ To build the container from this repo simply run:
 /bin/sh scripts/build.sh
 ```
 
+## Develop Locally
+
+``` shell
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python mdns.py
+```
+
 ## Usage
 
 ### Environmental Variables
